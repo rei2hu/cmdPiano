@@ -31,8 +31,8 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
+import javax.sound.sampled.LineEvent.Type;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
@@ -73,6 +73,8 @@ public class PianoClient{
 //        BufferedReader typed = new BufferedReader(new InputStreamReader(System.in));
 //        String line = "";
         boolean wait = false;
+        String currentSound;
+        
         while(true){
             
             //force enter key press because cant figure out keyevent/listener stuff and don't want gui
@@ -103,10 +105,49 @@ public class PianoClient{
             
             if ((sendMessage.startsWith(".") == true)){
                 sendMessage = sendMessage.substring(1);
-//                if (Pattern.matches("dir/(.*)", sendMessage) == true){
-//                    String newPath = sendMessage.substring(4);
-//                    System.out.println("New piano sound directory set" + newPath);
-//                }
+                
+                //directory command
+                //tempdir = folder with name in text file currentSound.txt
+                //currentDir = directory named current
+                //newDir = directory you want to use
+                //newNotes = name of directory you want to use
+                
+                if (Pattern.matches("dir/(.*)", sendMessage) == true){
+                    String newNotes = sendMessage.substring(4);
+                            
+                    //current piano sounds are located in text file currentSound.txt
+
+                    try(BufferedReader br = new BufferedReader(new FileReader("currentSound.txt"))) {
+                        StringBuilder sb = new StringBuilder();
+                        String line = br.readLine();
+
+                        while (line != null) {
+                            sb.append(line);
+                            sb.append(System.lineSeparator());
+                            line = br.readLine();
+                        }
+                        currentSound = sb.toString();
+                    }
+                    File tempDir = new File(currentSound);
+                    File currentDir = new File("current");
+                    File newDir = new File(newNotes);
+                    if (newDir.isDirectory()){
+                        currentDir.renameTo(tempDir);
+                        System.out.println(currentDir + "->" + tempDir);
+                        newDir.renameTo(currentDir);
+                        System.out.println(newDir + "->" + currentDir);
+                        PrintWriter writer = new PrintWriter("currentSound.txt", "UTF-8");
+                        writer.print(newNotes);
+                        writer.close();
+                    }else{
+                        System.out.println("invalid directory?");
+                    }
+                    wait = true;
+                    
+                    //don't send command to other players
+                    
+                    continue;
+                }
                 wait = true;
             }
             out.writeUTF(sendMessage);
@@ -156,14 +197,14 @@ class Input implements Runnable{
                 
                 if(message.endsWith("/") == true){
                     note = new File("./soundeffects/applause.wav");
-                    PlaySound(note);
+                        PlaySound(note);
                     continue;
                     
                 //cricket command (\\) from client to server to client
                     
                 }else if(message.endsWith("\\") == true){
                     note = new File("./soundeffects/cricket.wav");
-                    PlaySound(note);
+                        PlaySound(note);
                     continue;
                 }
                 
@@ -186,192 +227,194 @@ class Input implements Runnable{
                 //S D G H J L Z
                 //C V B
                 
+                //61 notes total
+                
                 for (int i = Integer.parseInt(message.substring(0, 1)) + 3; i < message.length(); i++){
                     String key = Character.toString(message.charAt(i));
                     switch(key){
                         case "1":
-                                note = new File("./maestro/a1.wav");
+                                note = new File("./current/a1.wav");
                                 break;
                         case "2":
-                                note = new File("./maestro/a2.wav");
+                                note = new File("./current/a2.wav");
                                 break;
                         case "3":
-                                note = new File("./maestro/a3.wav");
+                                note = new File("./current/a3.wav");
                                 break;
                         case "4":
-                                note = new File("./maestro/a4.wav");
+                                note = new File("./current/a4.wav");
                                 break;
                         case "5":
-                                note = new File("./maestro/a5.wav");
+                                note = new File("./current/a5.wav");
                                 break;
                         case "6":
-                                note = new File("./maestro/a6.wav");
+                                note = new File("./current/a6.wav");
                                 break;
                         case "7":
-                                note = new File("./maestro/a7.wav");
+                                note = new File("./current/a7.wav");
                                 break;
                         case "8":
-                                note = new File("./maestro/a8.wav");
+                                note = new File("./current/a8.wav");
                                 break;
                         case "9":
-                                note = new File("./maestro/a9.wav");
+                                note = new File("./current/a9.wav");
                                 break;
                         case "0":
-                                note = new File("./maestro/a10.wav");
+                                note = new File("./current/a10.wav");
                                 break;
                         case "q":
-                                note = new File("./maestro/a11.wav");
+                                note = new File("./current/a11.wav");
                                 break;
                         case "w":
-                                note = new File("./maestro/a12.wav");
+                                note = new File("./current/a12.wav");
                                 break;
                         case "e":
-                                note = new File("./maestro/a13.wav");
+                                note = new File("./current/a13.wav");
                                 break;
                         case "r":
-                                note = new File("./maestro/a14.wav");
+                                note = new File("./current/a14.wav");
                                 break;
                         case "t":
-                                note = new File("./maestro/a15.wav");
+                                note = new File("./current/a15.wav");
                                 break;
                         case "y":
-                                note = new File("./maestro/a16.wav");
+                                note = new File("./current/a16.wav");
                                 break;
                         case "u":
-                                note = new File("./maestro/a17.wav");
+                                note = new File("./current/a17.wav");
                                 break;
                         case "i":
-                                note = new File("./maestro/a18.wav");
+                                note = new File("./current/a18.wav");
                                 break;
                         case "o":
-                                note = new File("./maestro/a19.wav");
+                                note = new File("./current/a19.wav");
                                 break;
                         case "p":
-                                note = new File("./maestro/a20.wav");
+                                note = new File("./current/a20.wav");
                                 break;
                         case "a":
-                                note = new File("./maestro/a21.wav");
+                                note = new File("./current/a21.wav");
                                 break;
                         case "s":
-                                note = new File("./maestro/a22.wav");
+                                note = new File("./current/a22.wav");
                                 break;
                         case "d":
-                                note = new File("./maestro/a23.wav");
+                                note = new File("./current/a23.wav");
                                 break;
                         case "f":
-                                note = new File("./maestro/a24.wav");
+                                note = new File("./current/a24.wav");
                                 break;
                         case "g":
-                                note = new File("./maestro/a25.wav");
+                                note = new File("./current/a25.wav");
                                 break;
                         case "h":
-                                note = new File("./maestro/a26.wav");
+                                note = new File("./current/a26.wav");
                                 break;
                         case "j":
-                                note = new File("./maestro/a27.wav");
+                                note = new File("./current/a27.wav");
                                 break;
                         case "k":
-                                note = new File("./maestro/a28.wav");
+                                note = new File("./current/a28.wav");
                                 break;
                         case "l":
-                                note = new File("./maestro/a29.wav");
+                                note = new File("./current/a29.wav");
                                 break;
                         case "z":
-                                note = new File("./maestro/a30.wav");
+                                note = new File("./current/a30.wav");
                                 break;
                         case "x":
-                                note = new File("./maestro/a31.wav");
+                                note = new File("./current/a31.wav");
                                 break;
                         case "c":
-                                note = new File("./maestro/a32.wav");
+                                note = new File("./current/a32.wav");
                                 break;
                         case "v":
-                                note = new File("./maestro/a33.wav");
+                                note = new File("./current/a33.wav");
                                 break;
                         case "b":
-                                note = new File("./maestro/a34.wav");
+                                note = new File("./current/a34.wav");
                                 break;
                         case "n":
-                                note = new File("./maestro/a35.wav");
+                                note = new File("./current/a35.wav");
                                 break;
                         case "m":
-                                note = new File("./maestro/a36.wav");
+                                note = new File("./current/a36.wav");
                                 break;
                         case "!":
-                                note = new File("./maestro/b1.wav");
+                                note = new File("./current/b1.wav");
                                 break;
                         case "@":
-                                note = new File("./maestro/b2.wav");
+                                note = new File("./current/b2.wav");
                                 break;
                         case "$":
-                                note = new File("./maestro/b3.wav");
+                                note = new File("./current/b3.wav");
                                 break;
                         case "%":
-                                note = new File("./maestro/b4.wav");
+                                note = new File("./current/b4.wav");
                                 break;
                         case "^":
-                                note = new File("./maestro/b5.wav");
+                                note = new File("./current/b5.wav");
                                 break;
                         case "*":
-                                note = new File("./maestro/b6.wav");
+                                note = new File("./current/b6.wav");
                                 break;
                         case "(":
-                                note = new File("./maestro/b7.wav");
+                                note = new File("./current/b7.wav");
                                 break;
                         case "Q":
-                                note = new File("./maestro/b8.wav");
+                                note = new File("./current/b8.wav");
                                 break;
                         case "W":
-                                note = new File("./maestro/b9.wav");
+                                note = new File("./current/b9.wav");
                                 break;
                         case "E":
-                                note = new File("./maestro/b10.wav");
+                                note = new File("./current/b10.wav");
                                 break;
                         case "T":
-                                note = new File("./maestro/b11.wav");
+                                note = new File("./current/b11.wav");
                                 break;
                         case "Y":
-                                note = new File("./maestro/b12.wav");
+                                note = new File("./current/b12.wav");
                                 break;
                         case "I":
-                                note = new File("./maestro/b13.wav");
+                                note = new File("./current/b13.wav");
                                 break;
                         case "O":
-                                note = new File("./maestro/b14.wav");
+                                note = new File("./current/b14.wav");
                                 break;
                         case "P":
-                                note = new File("./maestro/b15.wav");
+                                note = new File("./current/b15.wav");
                                 break;
                         case "S":
-                                note = new File("./maestro/b16.wav");
+                                note = new File("./current/b16.wav");
                                 break;
                         case "D":
-                                note = new File("./maestro/b17.wav");
+                                note = new File("./current/b17.wav");
                                 break;
                         case "G":
-                                note = new File("./maestro/b18.wav");
+                                note = new File("./current/b18.wav");
                                 break;
                         case "H":
-                                note = new File("./maestro/b19.wav");
+                                note = new File("./current/b19.wav");
                                 break;
                         case "J":
-                                note = new File("./maestro/b20.wav");
+                                note = new File("./current/b20.wav");
                                 break;
                         case "L":
-                                note = new File("./maestro/b21.wav");
+                                note = new File("./current/b21.wav");
                                 break;
                         case "Z":
-                                note = new File("./maestro/b22.wav");
+                                note = new File("./current/b22.wav");
                                 break;
                             
                         case "C":
-                                note = new File("./maestro/b23.wav");
+                                note = new File("./current/b23.wav");
                                 break;
                         case "V":
-                                note = new File("./maestro/b24.wav");
+                                note = new File("./current/b24.wav");
                                 break;
                         case "B":
-                                note = new File("./maestro/b25.wav");
+                                note = new File("./current/b25.wav");
                                 break;
 //                        case "/":  
 //                                PlaySound(getClass().getResourceAsStream("/soundeffects/applause.wav"));
@@ -381,7 +424,7 @@ class Input implements Runnable{
 //                            System.out.println("nothing");
                                 continue;
                     }
-                    PlaySound(note);
+                        PlaySound(note);
                 }
 //                System.out.println(message);
             }catch (IOException e){
@@ -405,3 +448,36 @@ class Input implements Runnable{
         }
     }
 }
+    
+//    public static void PlaySound(File clipFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
+//        
+//        class AudioListener implements LineListener {
+//            private boolean done = false;
+//            @Override public synchronized void update(LineEvent event) {
+//                Type eventType = event.getType();
+//                if (eventType == Type.STOP || eventType == Type.CLOSE) {
+//                    done = true;
+//                    notifyAll();
+//                }
+//            }
+//            public synchronized void waitUntilDone() throws InterruptedException {
+//                while (!done) { wait(); }
+//            }
+//        }
+//        AudioListener listener = new AudioListener();
+//        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(clipFile);
+//        try {
+//            Clip clip = AudioSystem.getClip();
+//            clip.addLineListener(listener);
+//            clip.open(audioInputStream);
+//            try {
+//                clip.start();
+//                listener.waitUntilDone();
+//            } finally {
+//                clip.close();
+//            }
+//        } finally {
+//            audioInputStream.close();
+//        }
+//    }
+//}
