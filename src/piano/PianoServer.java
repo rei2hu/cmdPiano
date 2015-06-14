@@ -31,7 +31,7 @@ public class PianoServer {
         String ip = inBR.readLine();
         
         //start server
-        System.out.println("Starting server on " + ip + ":7777");
+        System.out.println("Starting server on " + "ip" + ":7777");
         serverSocket = new ServerSocket(7777);
         System.out.println("Server started (hopefully)");
         
