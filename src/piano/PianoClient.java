@@ -7,78 +7,185 @@ package piano;
 /**
  *
  * @author Thomas
+Running:
+
+@echo off
+
+echo Server or client (s/c)?
+
+set /p var=
+if '%var%' == 's' goto Server
+if '%var%' == 'c' goto Client
+
+echo that's not a choice
+pause
+exit
+
+:Server
+java -cp Piano(noip).jar piano.PianoServer
+
+:Client
+java -cp Piano(noip).jar piano.PianoClient
  */
 import java.net.*;
 import java.io.*;
 import java.util.*;
+import java.util.regex.*;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
-
 public class PianoClient{
+    
     static Socket socket;
     static DataInputStream in;
     static DataOutputStream out;
+    static String newPath;
+    
     public static void main(String[] args)throws Exception{
+        
+        //pick ip of server
+        
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter IP of server: ");
         String ip = sc.nextLine();
         System.out.println("Connecting to " + ip);
         socket = new Socket(ip, 7777);
         System.out.println("Connected");
+        
+        //client sending and recieving thread
+        
         in = new DataInputStream(socket.getInputStream());
         out = new DataOutputStream(socket.getOutputStream());
         Input input = new Input(in);
         Thread thread = new Thread(input);
         thread.start();
+        
         //username stuff
+        //first item is username
+        
         System.out.print("Enter a username: ");
         String username = sc.nextLine();
         out.writeUTF(username);
+        
         Robot robot = new Robot();
 //        BufferedReader typed = new BufferedReader(new InputStreamReader(System.in));
 //        String line = "";
         boolean wait = false;
         while(true){
+            
             //force enter key press because cant figure out keyevent/listener stuff and don't want gui
+            
             if(!wait){
                 robot.keyPress(KeyEvent.VK_ENTER);
             }
+            
             String sendMessage = sc.nextLine();
             wait = false;
-            if ((sendMessage.endsWith("/") == true) || (sendMessage.endsWith("\\") == true) || (sendMessage.endsWith(".") == true)){
+
+            //chat commands applaud and crickets
+            //applause = //
+            //crickets = \\
+            //wait so doing these commands wont interfere with chat
+            
+            if ((sendMessage.endsWith("//") == true) || (sendMessage.endsWith("\\\\") == true)){
+                wait = true;
+            }
+            
+            //chatting and other commands
+            //
+            //chat messages start with .
+            //change directory --- .dir/
+            //
+            //chat messages and commands apart from applause and crickets start with period
+            //wait so doing these commands wont interfere with chat
+            
+            if ((sendMessage.startsWith(".") == true)){
+                sendMessage = sendMessage.substring(1);
+//                if (Pattern.matches("dir/(.*)", sendMessage) == true){
+//                    String newPath = sendMessage.substring(4);
+//                    System.out.println("New piano sound directory set" + newPath);
+//                }
                 wait = true;
             }
             out.writeUTF(sendMessage);
         }
     }
 }
+
 class Input implements Runnable{
+    
     DataInputStream in;
+    
     public Input(DataInputStream in){
         this.in = in;
     }
+    
     public void run(){
         while(true){
             try{
                 //splits the "message" into individual letters and then plays notes based on those letters
+                
                 String message = in.readUTF();
                 File note = new File("");
-                System.out.println(message.substring(1));
+                
+                //message printing, can avoid printing with commented statement
+                //if message minus (name length), minus 3 characters representing
+                // : colon
+                //   space between colon and message
+                // 3 represents name length
+                //is greater than 1, then print.
+                //possible that 2 keys are pressed fast enough when playing so they are sent
+                
+                if ((message.length() - Integer.parseInt(message.substring(0, 1)) - 3) > 1){
+                    System.out.println(message.substring(1));
+                    continue;
+                }
+                
+                
 //                if(message.startsWith("6Server:") == true ){
 //                    continue;
 //                }else 
-                if(message.endsWith("/") == true){
+                
+                
+                //note: for sounds to play you need folders in same directory as
+                //jar file when compiled or something
+                
+                //clap command (//) from client to server to client
+                
+                if(message.endsWith("//") == true){
                     note = new File("./soundeffects/applause.wav");
                     PlaySound(note);
                     continue;
-                }else if(message.endsWith("\\") == true){
+                    
+                //cricket command (\\) from client to server to client
+                    
+                }else if(message.endsWith("\\\\") == true){
                     note = new File("./soundeffects/cricket.wav");
                     PlaySound(note);
                     continue;
                 }
+                
+                //chat messages (begin with .) from client to server to client
+                //dont play any sound
+                //might not be necessary: lines 123-125 skip if message is longer than 1
+                    
+//                }else if (message.startsWith(".") == true){
+//                    continue;
+//                }
+                
+                //this is the main note playing section
+                //1 2 3 4 5 6 7 8 9 0
+                //q w e r t y u i o p
+                //a s d f g h j k l
+                //z x c v b n m
+                
+                //! @ $ % ^ * (
+                //Q W E T Y I O P
+                //S D G H J L Z
+                //C V B
+                
                 for (int i = Integer.parseInt(message.substring(0, 1)) + 3; i < message.length(); i++){
                     String key = Character.toString(message.charAt(i));
                     switch(key){
@@ -282,6 +389,8 @@ class Input implements Runnable{
             }
         }
     }
+
+    //wav playing
     
     public static void PlaySound(File Sound){
         try
