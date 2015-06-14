@@ -89,7 +89,7 @@ public class PianoClient{
             //crickets = \\
             //wait so doing these commands wont interfere with chat
             
-            if ((sendMessage.endsWith("//") == true) || (sendMessage.endsWith("\\\\") == true)){
+            if ((sendMessage.endsWith("/") == true) || (sendMessage.endsWith("\\") == true)){
                 wait = true;
             }
             
@@ -154,14 +154,14 @@ class Input implements Runnable{
                 
                 //clap command (//) from client to server to client
                 
-                if(message.endsWith("//") == true){
+                if(message.endsWith("/") == true){
                     note = new File("./soundeffects/applause.wav");
                     PlaySound(note);
                     continue;
                     
                 //cricket command (\\) from client to server to client
                     
-                }else if(message.endsWith("\\\\") == true){
+                }else if(message.endsWith("\\") == true){
                     note = new File("./soundeffects/cricket.wav");
                     PlaySound(note);
                     continue;
