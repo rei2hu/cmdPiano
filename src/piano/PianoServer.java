@@ -51,8 +51,14 @@ public class PianoServer {
         
         //start server
         System.out.println("Starting server on " + ip + ":7777");
-        serverSocket = new ServerSocket(7777);
-        System.out.println("Server started (hopefully)");
+        try{
+            serverSocket = new ServerSocket(7777);
+        }catch(IOException e){
+            System.out.println("Could not start server!");
+            System.in.read();
+            System.exit(0);
+        }
+        System.out.println("Server started!");
         
         //constantly check for connections
         while(true){
@@ -78,60 +84,5 @@ public class PianoServer {
         }
         
     }
-}
-
-//should have own java file?
-class Users implements Runnable{
-
-    DataOutputStream out;
-    DataInputStream in;
-
-    Users[] user = new Users[10]; //max users 10
-    String username;
-
-    public Users(DataOutputStream out, DataInputStream in, Users[] user){
-        this.out = out;
-        this.in = in;
-        this.user = user;
-    }
-    
-    //when someone connects
-    public void run(){
-        try{
-            
-            //first string recieved is the username
-            
-            username = in.readUTF();
-            System.out.println(username + " has joined the server.");
-            out.writeUTF("6Server: " + username + " has joined the server.");
-        }catch(IOException e1){
-            e1.printStackTrace();
-        }
-        
-        while(true){
-            try{
-                
-                //chat messages and notes
-                
-                String message = in.readUTF();
-                for (int i = 0; i < 10; i++){
-                    if ((user[i] != null) && (message.length() > 0) && (message != null)){
-                        user[i].out.writeUTF(username.length() + username + ": " + message);
-                    }                 
-                }
-                
-                //if someone disconnects
-                
-            }catch (IOException e){
-                this.out = null;
-                this.in = null;
-            }catch (Exception e2){
-                this.out = null;
-                this.in = null;
-            }
-        }
-
-    }
-
 }
 
