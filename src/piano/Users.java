@@ -48,6 +48,9 @@ public class Users implements Runnable{
                 String message = in.readUTF();
                 for (int i = 0; i < 10; i++){
                     if ((user[i] != null) && (message.length() > 0) && (message != null)){
+                        if (message.length() > 1){
+                            System.out.println(username.length() + username + ": " + message);
+                        }
                         user[i].out.writeUTF(username.length() + username + ": " + message);
                     }                 
                 }

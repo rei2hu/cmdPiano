@@ -27,7 +27,7 @@ class PlaySound implements Runnable{
             Clip clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(file));
             clip.start();
-            Thread.sleep(clip.getMicrosecondLength() / 1000);
+            Thread.sleep(2000);
             clip.stop();
             clip.close();
 //            clip.addLineListener(new LineListener() {

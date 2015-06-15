@@ -5,6 +5,7 @@
  */
 package piano;
 
+import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +18,40 @@ import java.lang.String;
 
 public class Input implements Runnable{
     
+//    //30 colors for gradient
+//    
+//    Color[] colors = {new Color(0,0,44),new Color(5, 5, 60),new Color(9,9,70),new Color(12,12,80),
+//                        new Color(15,15,90), new Color(18,18,100), new Color(20,20,110),new Color(26,26,120),
+//                        new Color(31,31,128), new Color(36,36,138), new Color(45,45,136), new Color(51,51,149),
+//                        new Color(62,62,161), new Color(72,72,171), new Color(81,81,176), new Color(91,91,185),
+//                        new Color(99,99,188), new Color(110,100,192), new Color(120,120,198), new Color(131,131,202),
+//                        new Color(144,144,210), new Color(155,155,212), new Color(168,168,216), new Color(180,180,222),
+//                        new Color(191,191,225), new Color(201,201,228), new Color(215,215,235), new Color(234,234,240),
+//                        new Color(240,240,242), new Color(255,255,255)};
+//    
+//    int _1, _2, _3, _4, _5, _6, _7, _8, _9, _0, _q, _w, _e, _r, _t, _y, _u, _i, _o, _p, _a, _s, _d, _f, _g, _h, _j, _k, _l,
+//            _z, _x, _c, _v, _b, _n, _m, __1, __2, __4, __5, __6, __8, __9, _Q, _E, _T, _Y, _I, _O, _P, _S, _D, _G, _H, _J, 
+//            _L, _Z, _C, _V, _B = 0;
+//    
+//    int[] colorIndex = {_1, _2, _3, _4, _5, _6, _7, _8, _9, _0, _q, _w, _e, _r, _t, _y, _u, _i, _o, _p, _a, _s, _d, _f, _g, _h, _j, _k, _l,
+//            _z, _x, _c, _v, _b, _n, _m, __1, __2, __4, __5, __6, __8, __9, _Q, _E, _T, _Y, _I, _O, _P, _S, _D, _G, _H, _J, 
+//            _L, _Z, _C, _V, _B};
+    
+    String[] keyNotes = {"1","2","3","4","5","6","7","8","9","0","q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m","!","@","$","%","^","*","(","Q","W","E","T","Y","I","O","P","S","D","G","H","J","L","Z","C","V","B"};
+    
+    File[] fileLocations = {new File("./current/a1.wav"),new File("./current/a2.wav"),new File("./current/a3.wav"),new File("./current/a4.wav"),new File("./current/a5.wav"),
+                            new File("./current/a6.wav"),new File("./current/a7.wav"),new File("./current/a8.wav"),new File("./current/a9.wav"),new File("./current/a10.wav"),
+                            new File("./current/a11.wav"),new File("./current/a12.wav"),new File("./current/a13.wav"),new File("./current/a14.wav"),new File("./current/a15.wav"),
+                            new File("./current/a16.wav"),new File("./current/a17.wav"),new File("./current/a18.wav"),new File("./current/a19.wav"),new File("./current/a20.wav"),
+                            new File("./current/a21.wav"),new File("./current/a22.wav"),new File("./current/a23.wav"),new File("./current/a24.wav"),new File("./current/a25.wav"),
+                            new File("./current/a26.wav"),new File("./current/a27.wav"),new File("./current/a28.wav"),new File("./current/a29.wav"),new File("./current/a30.wav"),
+                            new File("./current/a31.wav"),new File("./current/a32.wav"),new File("./current/a33.wav"),new File("./current/a34.wav"),new File("./current/a35.wav"),
+                            new File("./current/a36.wav"),new File("./current/b1.wav"),new File("./current/b2.wav"),new File("./current/b3.wav"),new File("./current/b4.wav"),
+                            new File("./current/b5.wav"),new File("./current/b6.wav"),new File("./current/b7.wav"),new File("./current/b8.wav"),new File("./current/b9.wav"),
+                            new File("./current/b10.wav"),new File("./current/b11.wav"),new File("./current/b12.wav"),new File("./current/b13.wav"),new File("./current/b14.wav"),
+                            new File("./current/b15.wav"),new File("./current/b16.wav"),new File("./current/b17.wav"),new File("./current/b18.wav"),new File("./current/b19.wav"),
+                            new File("./current/b20.wav"),new File("./current/b21.wav"),new File("./current/b22.wav"),new File("./current/b23.wav"),new File("./current/b24.wav"),
+                            new File("./current/b25.wav"),};
     DataInputStream in;
     
     public Input(DataInputStream in){
@@ -28,19 +63,19 @@ public class Input implements Runnable{
         
         while(true){
             try{
-                //splits the "message" into individual letters and then plays notes based on those letters
                 
                 String message = in.readUTF();
-                File note = new File("");
+                File note = null;
                 
                 //message printing, can avoid printing with commented statement
-                //if message minus (name length), minus 3 characters representing
+                //if message starting from (name length) plus 3 characters representing
                 // : colon
                 //   space between colon and message
                 // 3 represents name length
                 //is greater than 1, then print.
                 //because message always starts with . it should be ok
-                //
+                //if it is from server, print
+                
                 if ((message.startsWith("6Server")) == true){
                     System.out.println(message.substring(1));
                     PianoGUI.chatBox2.append(message.substring(1) + "\n");
@@ -50,12 +85,6 @@ public class Input implements Runnable{
                     PianoGUI.chatBox2.append(message.substring(1) + "\n");
                     continue;
                 }
-                
-                
-//                if(message.startsWith("6Server:") == true ){
-//                    continue;
-//                }else 
-                
                 
                 //note: for sounds to play you need folders in same directory as
                 //jar file when compiled or something
@@ -80,15 +109,7 @@ public class Input implements Runnable{
                         note = null;
                     continue;
                 }
-                
-                //chat messages (begin with .) from client to server to client
-                //dont play any sound
-                //might not be necessary: lines 123-125 skip if message is longer than 1
-                    
-//                }else if (message.startsWith(".") == true){
-//                    continue;
-//                }
-                
+
                 //this is the main note playing section
                 //1 2 3 4 5 6 7 8 9 0
                 //q w e r t y u i o p
@@ -104,192 +125,11 @@ public class Input implements Runnable{
                 
                 for (int i = Integer.parseInt(message.substring(0, 1)) + 3; i < message.length(); i++){
                     String key = Character.toString(message.charAt(i));
-                    switch(key){
-                        case "1":
-                                note = new File("./current/a1.wav");
-                                break;
-                        case "2":
-                                note = new File("./current/a2.wav");
-                                break;
-                        case "3":
-                                note = new File("./current/a3.wav");
-                                break;
-                        case "4":
-                                note = new File("./current/a4.wav");
-                                break;
-                        case "5":
-                                note = new File("./current/a5.wav");
-                                break;
-                        case "6":
-                                note = new File("./current/a6.wav");
-                                break;
-                        case "7":
-                                note = new File("./current/a7.wav");
-                                break;
-                        case "8":
-                                note = new File("./current/a8.wav");
-                                break;
-                        case "9":
-                                note = new File("./current/a9.wav");
-                                break;
-                        case "0":
-                                note = new File("./current/a10.wav");
-                                break;
-                        case "q":
-                                note = new File("./current/a11.wav");
-                                break;
-                        case "w":
-                                note = new File("./current/a12.wav");
-                                break;
-                        case "e":
-                                note = new File("./current/a13.wav");
-                                break;
-                        case "r":
-                                note = new File("./current/a14.wav");
-                                break;
-                        case "t":
-                                note = new File("./current/a15.wav");
-                                break;
-                        case "y":
-                                note = new File("./current/a16.wav");
-                                break;
-                        case "u":
-                                note = new File("./current/a17.wav");
-                                break;
-                        case "i":
-                                note = new File("./current/a18.wav");
-                                break;
-                        case "o":
-                                note = new File("./current/a19.wav");
-                                break;
-                        case "p":
-                                note = new File("./current/a20.wav");
-                                break;
-                        case "a":
-                                note = new File("./current/a21.wav");
-                                break;
-                        case "s":
-                                note = new File("./current/a22.wav");
-                                break;
-                        case "d":
-                                note = new File("./current/a23.wav");
-                                break;
-                        case "f":
-                                note = new File("./current/a24.wav");
-                                break;
-                        case "g":
-                                note = new File("./current/a25.wav");
-                                break;
-                        case "h":
-                                note = new File("./current/a26.wav");
-                                break;
-                        case "j":
-                                note = new File("./current/a27.wav");
-                                break;
-                        case "k":
-                                note = new File("./current/a28.wav");
-                                break;
-                        case "l":
-                                note = new File("./current/a29.wav");
-                                break;
-                        case "z":
-                                note = new File("./current/a30.wav");
-                                break;
-                        case "x":
-                                note = new File("./current/a31.wav");
-                                break;
-                        case "c":
-                                note = new File("./current/a32.wav");
-                                break;
-                        case "v":
-                                note = new File("./current/a33.wav");
-                                break;
-                        case "b":
-                                note = new File("./current/a34.wav");
-                                break;
-                        case "n":
-                                note = new File("./current/a35.wav");
-                                break;
-                        case "m":
-                                note = new File("./current/a36.wav");
-                                break;
-                        case "!":
-                                note = new File("./current/b1.wav");
-                                break;
-                        case "@":
-                                note = new File("./current/b2.wav");
-                                break;
-                        case "$":
-                                note = new File("./current/b3.wav");
-                                break;
-                        case "%":
-                                note = new File("./current/b4.wav");
-                                break;
-                        case "^":
-                                note = new File("./current/b5.wav");
-                                break;
-                        case "*":
-                                note = new File("./current/b6.wav");
-                                break;
-                        case "(":
-                                note = new File("./current/b7.wav");
-                                break;
-                        case "Q":
-                                note = new File("./current/b8.wav");
-                                break;
-                        case "W":
-                                note = new File("./current/b9.wav");
-                                break;
-                        case "E":
-                                note = new File("./current/b10.wav");
-                                break;
-                        case "T":
-                                note = new File("./current/b11.wav");
-                                break;
-                        case "Y":
-                                note = new File("./current/b12.wav");
-                                break;
-                        case "I":
-                                note = new File("./current/b13.wav");
-                                break;
-                        case "O":
-                                note = new File("./current/b14.wav");
-                                break;
-                        case "P":
-                                note = new File("./current/b15.wav");
-                                break;
-                        case "S":
-                                note = new File("./current/b16.wav");
-                                break;
-                        case "D":
-                                note = new File("./current/b17.wav");
-                                break;
-                        case "G":
-                                note = new File("./current/b18.wav");
-                                break;
-                        case "H":
-                                note = new File("./current/b19.wav");
-                                break;
-                        case "J":
-                                note = new File("./current/b20.wav");
-                                break;
-                        case "L":
-                                note = new File("./current/b21.wav");
-                                break;
-                        case "Z":
-                                note = new File("./current/b22.wav");
-                                break;   
-                        case "C":
-                                note = new File("./current/b23.wav");
-                                break;
-                        case "V":
-                                note = new File("./current/b24.wav");
-                                break;
-                        case "B":
-                                note = new File("./current/b25.wav");
-                                break;
-                        default:
-                                continue;
+                    for (int j = 0; j < 61; j++){
+                        if(key.equals(keyNotes[j])){
+                            note = fileLocations[j];
+                            break;
+                        }
                     }
                         PlaySound Playsound = new PlaySound(note);
                         Thread PlaySound = new Thread(Playsound);
@@ -300,19 +140,4 @@ public class Input implements Runnable{
             }
         }
     }
-
-    //wav playing
-    
-//    public static void PlaySound(File Sound){
-//        try
-//        {
-//            Clip clip = AudioSystem.getClip();
-//            clip.open(AudioSystem.getAudioInputStream(Sound));
-//            clip.start();
-//        }
-//        catch (Exception exc)
-//        {
-//            exc.printStackTrace(System.out);
-//        }
-//    }
 }

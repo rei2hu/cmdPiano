@@ -23,13 +23,13 @@ public class Output implements Runnable{
     }
     
     public void run(){
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         while(true){
-            String message = scanner.nextLine();
-            try{
-                out.writeUTF(message);
-            }catch(IOException e){
-            }
+            //String message = scanner.nextLine();
+//            try{
+//                out.writeUTF(message);
+//            }catch(IOException e){
+//            }
         }
     }
   
