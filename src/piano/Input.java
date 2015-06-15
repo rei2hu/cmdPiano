@@ -71,16 +71,18 @@ public class Input implements Runnable{
                 
                 if ((message.startsWith("6Server")) == true){
                     try{
-                        Thread.sleep(5000);
+                        Thread.sleep(500);
                     }catch(InterruptedException e){
                         
                     }
                     System.out.println(message.substring(1));
                     PianoGUI.chatBox2.append(message.substring(1) + "\n");
+                    PianoGUI.chatBox2.setCaretPosition(PianoGUI.chatBox2.getDocument().getLength());
                     continue;
                 }else if ((message.substring(3 + Integer.parseInt(message.substring(0,1))).startsWith(".")) == true){
                     message = message.substring(0, 3 + Integer.parseInt(message.substring(0,1))) + message.substring(4 + Integer.parseInt(message.substring(0,1)));
                     PianoGUI.chatBox2.append(message.substring(1) + "\n");
+                    PianoGUI.chatBox2.setCaretPosition(PianoGUI.chatBox2.getDocument().getLength());
                     continue;
                 }
                 

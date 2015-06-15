@@ -19,15 +19,15 @@ public class Users implements Runnable{
     DataOutputStream out;
     DataInputStream in;
     Users[] user = new Users[10]; //max users 10
-    Color color;
+    int pid;
     
     String username;
 
-    public Users(DataOutputStream out, DataInputStream in, Users[] user, Color color){
+    public Users(DataOutputStream out, DataInputStream in, Users[] user, int pid){
         this.out = out;
         this.in = in;
         this.user = user;
-        this.color = color;
+        this.pid = pid;
     }
     
     //when someone connects
@@ -38,9 +38,17 @@ public class Users implements Runnable{
             
             username = in.readUTF().substring(1);
             System.out.println(username + " has joined the server.");
-            out.writeUTF("6Server: " + username + " has joined the server.");
-        }catch(IOException e1){
-            e1.printStackTrace();
+            for (int i = 0; i < 10; i++){
+                    if (user[i] != null){
+                        try{
+                            user[i].out.writeUTF("6Server: " + username + " has joined the server.");
+                        }catch(IOException e2){
+                            
+                        }
+                    }                 
+                }
+        }catch(IOException e){
+            e.printStackTrace();
         }
         
         while(true){
@@ -49,11 +57,12 @@ public class Users implements Runnable{
                 //chat messages and notes
                 
                 String message = in.readUTF();
+                if (message.length() > 1){
+                            System.out.println(username.length() + username + ": " + message);
+                }
+                
                 for (int i = 0; i < 10; i++){
                     if ((user[i] != null) && (message.length() > 0) && (message != null)){
-                        if (message.length() > 1){
-                            System.out.println(username.length() + username + ": " + message);
-                        }
                         user[i].out.writeUTF(username.length() + username + ": " + message);
                     }                 
                 }
@@ -61,18 +70,32 @@ public class Users implements Runnable{
                 //if someone disconnects
                 
             }catch (IOException e){
-                this.out = null;
-                this.in = null;
-                this.user = null;
-                continue;
+                PianoServer.user[pid] = null;
+                for (int i = 0; i < 10; i++){
+                    if (user[i] != null){
+                        try{
+                            user[i].out.writeUTF("6Server: " + username + " has left the server.");
+                        }catch(IOException e2){
+                            
+                        }
+                    }                 
+                }
+                System.out.println(username + " has disconnected. IO");
+                break;
             }catch (Exception e){
-                this.out = null;
-                this.in = null;
-                this.user = null;
-                continue;
+                PianoServer.user[pid] = null;
+                for (int i = 0; i < 10; i++){
+                    if (user[i] != null){
+                        try{
+                            user[i].out.writeUTF("6Server: " + username + " has left the server.");
+                        }catch(IOException e2){
+                            
+                        }
+                    }                 
+                }
+                System.out.println(username + " has disconnected. E");
+                break;
             }
         }
-
     }
-
 }

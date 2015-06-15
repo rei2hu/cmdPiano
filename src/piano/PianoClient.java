@@ -27,7 +27,6 @@ java -cp Piano(noip).jar piano.PianoServer
 :Client
 java -cp Piano(noip).jar piano.PianoClient
  */
-import java.awt.Color;
 import java.net.*;
 import java.io.*;
 import java.util.*;
@@ -49,6 +48,9 @@ public class PianoClient{
         while(!connected){
             System.out.print("Enter IP of server: ");
             String ip = sc.nextLine();
+            if(ip.equals("")){
+                ip = "localhost";
+            }
             System.out.println("Connecting to " + ip);
             try{
                 socket = new Socket(ip, 7777);

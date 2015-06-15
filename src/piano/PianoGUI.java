@@ -88,7 +88,6 @@ public class PianoGUI extends javax.swing.JFrame {
             }
         });
 
-        chatBox1.setText("john");
         chatBox1.setToolTipText("");
         chatBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +102,7 @@ public class PianoGUI extends javax.swing.JFrame {
 
         chatBox2.setEditable(false);
         chatBox2.setColumns(20);
+        chatBox2.setLineWrap(true);
         chatBox2.setRows(5);
         jScrollPane3.setViewportView(chatBox2);
 
