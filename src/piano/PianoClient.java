@@ -27,6 +27,7 @@ java -cp Piano(noip).jar piano.PianoServer
 :Client
 java -cp Piano(noip).jar piano.PianoClient
  */
+import java.awt.Color;
 import java.net.*;
 import java.io.*;
 import java.util.*;
@@ -81,10 +82,10 @@ public class PianoClient{
         //username stuff
         //first item is username
         
-//        System.out.print("Enter a username: ");
-
-        PianoGUI.main(args);
+        System.out.print("Enter a username: ");
+        out.writeUTF("." + sc.nextLine());
         
+        PianoGUI.main(args);
         while(true){
             //dunno
         }

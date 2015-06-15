@@ -8,6 +8,7 @@ package piano;
 import java.io.File;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioInputStream;
 
 /**
  *
@@ -25,9 +26,11 @@ class PlaySound implements Runnable{
     public void run(){
         try{
             Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(file));
+            AudioInputStream stream = AudioSystem.getAudioInputStream(file);
+            clip.open(stream);
+            stream = null;
             clip.start();
-            Thread.sleep(2000);
+            Thread.sleep(1800);
             clip.stop();
             clip.close();
 //            clip.addLineListener(new LineListener() {

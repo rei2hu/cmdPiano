@@ -8,6 +8,7 @@ package piano;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.awt.Color;
 
 /**
  *
@@ -17,14 +18,16 @@ public class Users implements Runnable{
 
     DataOutputStream out;
     DataInputStream in;
-
     Users[] user = new Users[10]; //max users 10
+    Color color;
+    
     String username;
 
-    public Users(DataOutputStream out, DataInputStream in, Users[] user){
+    public Users(DataOutputStream out, DataInputStream in, Users[] user, Color color){
         this.out = out;
         this.in = in;
         this.user = user;
+        this.color = color;
     }
     
     //when someone connects
@@ -60,10 +63,12 @@ public class Users implements Runnable{
             }catch (IOException e){
                 this.out = null;
                 this.in = null;
+                this.user = null;
                 continue;
-            }catch (Exception e2){
+            }catch (Exception e){
                 this.out = null;
                 this.in = null;
+                this.user = null;
                 continue;
             }
         }

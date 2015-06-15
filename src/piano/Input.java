@@ -5,11 +5,10 @@
  */
 package piano;
 
-import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.lang.String;
+import static piano.PianoGUI.pianoArea;
 
 /**
  *
@@ -29,13 +28,6 @@ public class Input implements Runnable{
 //                        new Color(191,191,225), new Color(201,201,228), new Color(215,215,235), new Color(234,234,240),
 //                        new Color(240,240,242), new Color(255,255,255)};
 //    
-//    int _1, _2, _3, _4, _5, _6, _7, _8, _9, _0, _q, _w, _e, _r, _t, _y, _u, _i, _o, _p, _a, _s, _d, _f, _g, _h, _j, _k, _l,
-//            _z, _x, _c, _v, _b, _n, _m, __1, __2, __4, __5, __6, __8, __9, _Q, _E, _T, _Y, _I, _O, _P, _S, _D, _G, _H, _J, 
-//            _L, _Z, _C, _V, _B = 0;
-//    
-//    int[] colorIndex = {_1, _2, _3, _4, _5, _6, _7, _8, _9, _0, _q, _w, _e, _r, _t, _y, _u, _i, _o, _p, _a, _s, _d, _f, _g, _h, _j, _k, _l,
-//            _z, _x, _c, _v, _b, _n, _m, __1, __2, __4, __5, __6, __8, __9, _Q, _E, _T, _Y, _I, _O, _P, _S, _D, _G, _H, _J, 
-//            _L, _Z, _C, _V, _B};
     
     String[] keyNotes = {"1","2","3","4","5","6","7","8","9","0","q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m","!","@","$","%","^","*","(","Q","W","E","T","Y","I","O","P","S","D","G","H","J","L","Z","C","V","B"};
     
@@ -60,12 +52,13 @@ public class Input implements Runnable{
     
     public void run(){
         
-        
+        File note = null;
+                        
         while(true){
+            
             try{
                 
                 String message = in.readUTF();
-                File note = null;
                 
                 //message printing, can avoid printing with commented statement
                 //if message starting from (name length) plus 3 characters representing
@@ -77,6 +70,11 @@ public class Input implements Runnable{
                 //if it is from server, print
                 
                 if ((message.startsWith("6Server")) == true){
+                    try{
+                        Thread.sleep(5000);
+                    }catch(InterruptedException e){
+                        
+                    }
                     System.out.println(message.substring(1));
                     PianoGUI.chatBox2.append(message.substring(1) + "\n");
                     continue;
@@ -89,26 +87,18 @@ public class Input implements Runnable{
                 //note: for sounds to play you need folders in same directory as
                 //jar file when compiled or something
                 
-                //clap command (//) from client to server to client
+                //clap command (/) from client to server to client
                 
                 if(message.endsWith("/") == true){
                     note = new File("./soundeffects/applause.wav");
-                        PlaySound Playsound = new PlaySound(note);
-                        Thread PlaySound = new Thread(Playsound);
-                        PlaySound.start();
-                        note = null;
-                    continue;
                     
-                //cricket command (\\) from client to server to client
+                //cricket command (\) from client to server to client
                     
                 }else if(message.endsWith("\\") == true){
+                    
                     note = new File("./soundeffects/cricket.wav");
-                        PlaySound Playsound = new PlaySound(note);
-                        Thread PlaySound = new Thread(Playsound);
-                        PlaySound.start();
-                        note = null;
-                    continue;
-                }
+                    
+                }else{
 
                 //this is the main note playing section
                 //1 2 3 4 5 6 7 8 9 0
@@ -123,19 +113,23 @@ public class Input implements Runnable{
                 
                 //61 notes total
                 
-                for (int i = Integer.parseInt(message.substring(0, 1)) + 3; i < message.length(); i++){
-                    String key = Character.toString(message.charAt(i));
-                    for (int j = 0; j < 61; j++){
-                        if(key.equals(keyNotes[j])){
-                            note = fileLocations[j];
-                            break;
+                    for (int i = Integer.parseInt(message.substring(0, 1)) + 3; i < message.length(); i++){
+                        String key = Character.toString(message.charAt(i));
+                        for (int j = 0; j < 61; j++){
+                            if(key.equals(keyNotes[j])){
+                                note = fileLocations[j];
+                                pianoArea.append(message.substring(1) + " | ");
+                                pianoArea.setCaretPosition(pianoArea.getDocument().getLength());
+                                break;
+                            }
                         }
                     }
-                        PlaySound Playsound = new PlaySound(note);
-                        Thread PlaySound = new Thread(Playsound);
-                        PlaySound.start();
-                        note = null;
                 }
+                PlaySound Playsound = new PlaySound(note);
+                Thread PlaySound = new Thread(Playsound);
+                PlaySound.start();
+                note = null;
+                
             }catch (IOException e){
             }
         }

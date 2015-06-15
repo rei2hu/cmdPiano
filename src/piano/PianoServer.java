@@ -32,6 +32,8 @@ java -cp Piano(noip).jar piano.PianoClient
 
 import java.io.*;
 import java.net.*;
+import java.util.Random;
+import java.awt.Color;
 
 public class PianoServer {
 
@@ -75,7 +77,12 @@ public class PianoServer {
     //            System.out.println("Data sent");
 
                 if (user[i] == null){
-                    user[i] = new Users(out, in, user);
+                    Random rand = new Random();
+                    float r = rand.nextFloat();
+                    float g = rand.nextFloat();
+                    float b = rand.nextFloat();
+                    Color randomColor = new Color(r, g, b);
+                    user[i] = new Users(out, in, user, randomColor);
                     Thread thread = new Thread(user[i]);
                     thread.start();
                     break;
