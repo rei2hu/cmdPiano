@@ -11,7 +11,6 @@ package piano;
  */
 
 import java.io.*;
-import java.awt.Color;
 
 public class PianoGUI extends javax.swing.JFrame {
     boolean shiftDown = false;
@@ -128,7 +127,7 @@ public class PianoGUI extends javax.swing.JFrame {
         jScrollPane4.setViewportView(pianoArea);
 
         panel1.setBackground(new java.awt.Color(0, 0, 0));
-        panel1.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel1.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -138,11 +137,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel2.setBackground(new java.awt.Color(0, 0, 0));
-        panel2.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel2.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
@@ -152,11 +151,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel3.setBackground(new java.awt.Color(0, 0, 0));
-        panel3.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel3.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
         panel3.setLayout(panel3Layout);
@@ -166,11 +165,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel3Layout.setVerticalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel4.setBackground(new java.awt.Color(0, 0, 0));
-        panel4.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel4.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel4Layout = new javax.swing.GroupLayout(panel4);
         panel4.setLayout(panel4Layout);
@@ -180,11 +179,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel4Layout.setVerticalGroup(
             panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel5.setBackground(new java.awt.Color(0, 0, 0));
-        panel5.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel5.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel5Layout = new javax.swing.GroupLayout(panel5);
         panel5.setLayout(panel5Layout);
@@ -194,11 +193,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel5Layout.setVerticalGroup(
             panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel6.setBackground(new java.awt.Color(0, 0, 0));
-        panel6.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel6.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel6Layout = new javax.swing.GroupLayout(panel6);
         panel6.setLayout(panel6Layout);
@@ -208,11 +207,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel6Layout.setVerticalGroup(
             panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel7.setBackground(new java.awt.Color(0, 0, 0));
-        panel7.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel7.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel7Layout = new javax.swing.GroupLayout(panel7);
         panel7.setLayout(panel7Layout);
@@ -222,11 +221,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel7Layout.setVerticalGroup(
             panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel8.setBackground(new java.awt.Color(0, 0, 0));
-        panel8.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel8.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel8Layout = new javax.swing.GroupLayout(panel8);
         panel8.setLayout(panel8Layout);
@@ -236,11 +235,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel8Layout.setVerticalGroup(
             panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel9.setBackground(new java.awt.Color(0, 0, 0));
-        panel9.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel9.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel9Layout = new javax.swing.GroupLayout(panel9);
         panel9.setLayout(panel9Layout);
@@ -250,11 +249,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel9Layout.setVerticalGroup(
             panel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel10.setBackground(new java.awt.Color(0, 0, 0));
-        panel10.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel10.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel10Layout = new javax.swing.GroupLayout(panel10);
         panel10.setLayout(panel10Layout);
@@ -264,11 +263,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel10Layout.setVerticalGroup(
             panel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel11.setBackground(new java.awt.Color(0, 0, 0));
-        panel11.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel11.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel11Layout = new javax.swing.GroupLayout(panel11);
         panel11.setLayout(panel11Layout);
@@ -278,11 +277,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel11Layout.setVerticalGroup(
             panel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel12.setBackground(new java.awt.Color(0, 0, 0));
-        panel12.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel12.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel12Layout = new javax.swing.GroupLayout(panel12);
         panel12.setLayout(panel12Layout);
@@ -292,11 +291,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel12Layout.setVerticalGroup(
             panel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel13.setBackground(new java.awt.Color(0, 0, 0));
-        panel13.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel13.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel13Layout = new javax.swing.GroupLayout(panel13);
         panel13.setLayout(panel13Layout);
@@ -306,11 +305,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel13Layout.setVerticalGroup(
             panel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel14.setBackground(new java.awt.Color(0, 0, 0));
-        panel14.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel14.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel14Layout = new javax.swing.GroupLayout(panel14);
         panel14.setLayout(panel14Layout);
@@ -320,11 +319,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel14Layout.setVerticalGroup(
             panel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel15.setBackground(new java.awt.Color(0, 0, 0));
-        panel15.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel15.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel15Layout = new javax.swing.GroupLayout(panel15);
         panel15.setLayout(panel15Layout);
@@ -334,11 +333,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel15Layout.setVerticalGroup(
             panel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel16.setBackground(new java.awt.Color(0, 0, 0));
-        panel16.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel16.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel16Layout = new javax.swing.GroupLayout(panel16);
         panel16.setLayout(panel16Layout);
@@ -348,11 +347,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel16Layout.setVerticalGroup(
             panel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel17.setBackground(new java.awt.Color(0, 0, 0));
-        panel17.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel17.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel17Layout = new javax.swing.GroupLayout(panel17);
         panel17.setLayout(panel17Layout);
@@ -362,11 +361,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel17Layout.setVerticalGroup(
             panel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel18.setBackground(new java.awt.Color(0, 0, 0));
-        panel18.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel18.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel18Layout = new javax.swing.GroupLayout(panel18);
         panel18.setLayout(panel18Layout);
@@ -376,11 +375,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel18Layout.setVerticalGroup(
             panel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel19.setBackground(new java.awt.Color(0, 0, 0));
-        panel19.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel19.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel19Layout = new javax.swing.GroupLayout(panel19);
         panel19.setLayout(panel19Layout);
@@ -390,11 +389,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel19Layout.setVerticalGroup(
             panel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel20.setBackground(new java.awt.Color(0, 0, 0));
-        panel20.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel20.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel20Layout = new javax.swing.GroupLayout(panel20);
         panel20.setLayout(panel20Layout);
@@ -404,11 +403,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel20Layout.setVerticalGroup(
             panel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel21.setBackground(new java.awt.Color(0, 0, 0));
-        panel21.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel21.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel21Layout = new javax.swing.GroupLayout(panel21);
         panel21.setLayout(panel21Layout);
@@ -418,11 +417,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel21Layout.setVerticalGroup(
             panel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel22.setBackground(new java.awt.Color(0, 0, 0));
-        panel22.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel22.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel22Layout = new javax.swing.GroupLayout(panel22);
         panel22.setLayout(panel22Layout);
@@ -432,11 +431,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel22Layout.setVerticalGroup(
             panel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel23.setBackground(new java.awt.Color(0, 0, 0));
-        panel23.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel23.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel23Layout = new javax.swing.GroupLayout(panel23);
         panel23.setLayout(panel23Layout);
@@ -446,11 +445,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel23Layout.setVerticalGroup(
             panel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel24.setBackground(new java.awt.Color(0, 0, 0));
-        panel24.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel24.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel24Layout = new javax.swing.GroupLayout(panel24);
         panel24.setLayout(panel24Layout);
@@ -460,11 +459,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel24Layout.setVerticalGroup(
             panel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel25.setBackground(new java.awt.Color(0, 0, 0));
-        panel25.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel25.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel25Layout = new javax.swing.GroupLayout(panel25);
         panel25.setLayout(panel25Layout);
@@ -474,11 +473,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel25Layout.setVerticalGroup(
             panel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel26.setBackground(new java.awt.Color(0, 0, 0));
-        panel26.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel26.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel26Layout = new javax.swing.GroupLayout(panel26);
         panel26.setLayout(panel26Layout);
@@ -488,11 +487,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel26Layout.setVerticalGroup(
             panel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel27.setBackground(new java.awt.Color(0, 0, 0));
-        panel27.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel27.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel27Layout = new javax.swing.GroupLayout(panel27);
         panel27.setLayout(panel27Layout);
@@ -502,11 +501,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel27Layout.setVerticalGroup(
             panel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel28.setBackground(new java.awt.Color(0, 0, 0));
-        panel28.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel28.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel28Layout = new javax.swing.GroupLayout(panel28);
         panel28.setLayout(panel28Layout);
@@ -516,11 +515,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel28Layout.setVerticalGroup(
             panel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel29.setBackground(new java.awt.Color(0, 0, 0));
-        panel29.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel29.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel29Layout = new javax.swing.GroupLayout(panel29);
         panel29.setLayout(panel29Layout);
@@ -530,11 +529,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel29Layout.setVerticalGroup(
             panel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel30.setBackground(new java.awt.Color(0, 0, 0));
-        panel30.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel30.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel30Layout = new javax.swing.GroupLayout(panel30);
         panel30.setLayout(panel30Layout);
@@ -544,11 +543,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel30Layout.setVerticalGroup(
             panel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel31.setBackground(new java.awt.Color(0, 0, 0));
-        panel31.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel31.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel31Layout = new javax.swing.GroupLayout(panel31);
         panel31.setLayout(panel31Layout);
@@ -558,11 +557,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel31Layout.setVerticalGroup(
             panel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel32.setBackground(new java.awt.Color(0, 0, 0));
-        panel32.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel32.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel32Layout = new javax.swing.GroupLayout(panel32);
         panel32.setLayout(panel32Layout);
@@ -572,11 +571,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel32Layout.setVerticalGroup(
             panel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel33.setBackground(new java.awt.Color(0, 0, 0));
-        panel33.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel33.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel33Layout = new javax.swing.GroupLayout(panel33);
         panel33.setLayout(panel33Layout);
@@ -586,11 +585,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel33Layout.setVerticalGroup(
             panel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel34.setBackground(new java.awt.Color(0, 0, 0));
-        panel34.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel34.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel34Layout = new javax.swing.GroupLayout(panel34);
         panel34.setLayout(panel34Layout);
@@ -600,11 +599,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel34Layout.setVerticalGroup(
             panel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel35.setBackground(new java.awt.Color(0, 0, 0));
-        panel35.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel35.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel35Layout = new javax.swing.GroupLayout(panel35);
         panel35.setLayout(panel35Layout);
@@ -614,11 +613,11 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel35Layout.setVerticalGroup(
             panel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         panel36.setBackground(new java.awt.Color(0, 0, 0));
-        panel36.setPreferredSize(new java.awt.Dimension(30, 180));
+        panel36.setPreferredSize(new java.awt.Dimension(30, 20));
 
         javax.swing.GroupLayout panel36Layout = new javax.swing.GroupLayout(panel36);
         panel36.setLayout(panel36Layout);
@@ -628,7 +627,7 @@ public class PianoGUI extends javax.swing.JFrame {
         );
         panel36Layout.setVerticalGroup(
             panel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -771,8 +770,6 @@ public class PianoGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {panel1, panel10, panel11, panel12, panel13, panel14, panel15, panel16, panel17, panel18, panel19, panel2, panel20, panel21, panel22, panel23, panel24, panel25, panel26, panel27, panel28, panel29, panel3, panel30, panel31, panel32, panel33, panel34, panel35, panel36, panel4, panel5, panel6, panel7, panel8, panel9});
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -796,6 +793,18 @@ public class PianoGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_chatBox1KeyPressed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
+
+    private void pianoAreaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pianoAreaKeyReleased
+        // TODO add your handling code here:
+        int keyInt = evt.getKeyCode();
+        if (keyInt == 16){
+            shiftDown = false;
+        }
+    }//GEN-LAST:event_pianoAreaKeyReleased
+
     private void pianoAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pianoAreaKeyPressed
         // TODO add your handling code here:
         int keyInt = evt.getKeyCode();
@@ -807,28 +816,16 @@ public class PianoGUI extends javax.swing.JFrame {
             try{
                 PianoClient.out.writeUTF(Character.toString(keyChar));
             }catch(IOException e){
-                
+
             }
         }else{
             try{
                 PianoClient.out.writeUTF(Character.toString(keyChar).toLowerCase());
             }catch(IOException e){
-                
+
             }
         }
     }//GEN-LAST:event_pianoAreaKeyPressed
-
-    private void pianoAreaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pianoAreaKeyReleased
-        // TODO add your handling code here:
-        int keyInt = evt.getKeyCode();
-        if (keyInt == 16){
-            shiftDown = false;
-        }
-    }//GEN-LAST:event_pianoAreaKeyReleased
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formWindowActivated
 
     private void pianoAreaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_pianoAreaCaretUpdate
         // TODO add your handling code here:

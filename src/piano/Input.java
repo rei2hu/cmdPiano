@@ -17,19 +17,9 @@ import static piano.PianoGUI.pianoArea;
 
 public class Input implements Runnable{
     
-//    //30 colors for gradient
-//    
-//    Color[] colors = {new Color(0,0,44),new Color(5, 5, 60),new Color(9,9,70),new Color(12,12,80),
-//                        new Color(15,15,90), new Color(18,18,100), new Color(20,20,110),new Color(26,26,120),
-//                        new Color(31,31,128), new Color(36,36,138), new Color(45,45,136), new Color(51,51,149),
-//                        new Color(62,62,161), new Color(72,72,171), new Color(81,81,176), new Color(91,91,185),
-//                        new Color(99,99,188), new Color(110,100,192), new Color(120,120,198), new Color(131,131,202),
-//                        new Color(144,144,210), new Color(155,155,212), new Color(168,168,216), new Color(180,180,222),
-//                        new Color(191,191,225), new Color(201,201,228), new Color(215,215,235), new Color(234,234,240),
-//                        new Color(240,240,242), new Color(255,255,255)};
-//    
-    
     String[] keyNotes = {"1","2","3","4","5","6","7","8","9","0","q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m","!","@","$","%","^","*","(","Q","W","E","T","Y","I","O","P","S","D","G","H","J","L","Z","C","V","B"};
+    
+    int _1, _2, _3, _4, _5, _6, _7, _8 ,_9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24 ,_25, _26, _27, _28, _29, _30, _31, _32, _33, _34, _35, _36;
     
     File[] fileLocations = {new File("./current/a1.wav"),new File("./current/a2.wav"),new File("./current/a3.wav"),new File("./current/a4.wav"),new File("./current/a5.wav"),
                             new File("./current/a6.wav"),new File("./current/a7.wav"),new File("./current/a8.wav"),new File("./current/a9.wav"),new File("./current/a10.wav"),
@@ -44,16 +34,23 @@ public class Input implements Runnable{
                             new File("./current/b15.wav"),new File("./current/b16.wav"),new File("./current/b17.wav"),new File("./current/b18.wav"),new File("./current/b19.wav"),
                             new File("./current/b20.wav"),new File("./current/b21.wav"),new File("./current/b22.wav"),new File("./current/b23.wav"),new File("./current/b24.wav"),
                             new File("./current/b25.wav"),};
+    
     DataInputStream in;
     
     public Input(DataInputStream in){
+        
         this.in = in;
+        
     }
     
     public void run(){
         
         File note = null;
-                        
+             
+//        ColorMod color = new ColorMod(true, _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8 ,  _9,  _10,  _11,  _12,  _13,  _14,  _15,  _16,  _17,  _18,  _19,  _20,  _21,  _22,  _23,  _24 ,  _25,  _26,  _27,  _28,  _29,  _30,  _31,  _32,  _33,  _34,  _35,  _36);
+//        Thread ColorMe = new Thread(color);
+//        ColorMe.start();
+            
         while(true){
             
             try{
@@ -70,20 +67,27 @@ public class Input implements Runnable{
                 //if it is from server, print
                 
                 if ((message.startsWith("6Server")) == true){
+                    
                     try{
+                        
                         Thread.sleep(500);
+                        
                     }catch(InterruptedException e){
                         
                     }
+                    
                     System.out.println(message.substring(1));
                     PianoGUI.chatBox2.append(message.substring(1) + "\n");
                     PianoGUI.chatBox2.setCaretPosition(PianoGUI.chatBox2.getDocument().getLength());
                     continue;
+                    
                 }else if ((message.substring(3 + Integer.parseInt(message.substring(0,1))).startsWith(".")) == true){
+                    
                     message = message.substring(0, 3 + Integer.parseInt(message.substring(0,1))) + message.substring(4 + Integer.parseInt(message.substring(0,1)));
                     PianoGUI.chatBox2.append(message.substring(1) + "\n");
                     PianoGUI.chatBox2.setCaretPosition(PianoGUI.chatBox2.getDocument().getLength());
                     continue;
+                    
                 }
                 
                 //note: for sounds to play you need folders in same directory as
@@ -93,12 +97,15 @@ public class Input implements Runnable{
                 
                 if(message.endsWith("/") == true){
                     note = new File("./soundeffects/applause.wav");
-                    
+                    pianoArea.append(message.substring(1) + "claps | ");
+                    pianoArea.setCaretPosition(pianoArea.getDocument().getLength());
                 //cricket command (\) from client to server to client
                     
                 }else if(message.endsWith("\\") == true){
                     
                     note = new File("./soundeffects/cricket.wav");
+                    pianoArea.append(message.substring(1) + " claps | ");
+                    pianoArea.setCaretPosition(pianoArea.getDocument().getLength());
                     
                 }else{
 
@@ -122,11 +129,15 @@ public class Input implements Runnable{
                                 note = fileLocations[j];
                                 pianoArea.append(message.substring(1) + " | ");
                                 pianoArea.setCaretPosition(pianoArea.getDocument().getLength());
+                                ColorMod color = new ColorMod(j);
+                                Thread ColorMe = new Thread(color);
+                                ColorMe.start();
                                 break;
                             }
                         }
                     }
                 }
+                
                 PlaySound Playsound = new PlaySound(note);
                 Thread PlaySound = new Thread(Playsound);
                 PlaySound.start();
