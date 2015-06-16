@@ -15,12 +15,19 @@ import static piano.PianoGUI.pianoArea;
  * @author Thomas
  */
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioInputStream;
+
 public class Input implements Runnable{
     
+    boolean noteGot = false;
+    
     String[] keyNotes = {"1","2","3","4","5","6","7","8","9","0","q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m","!","@","$","%","^","*","(","Q","W","E","T","Y","I","O","P","S","D","G","H","J","L","Z","C","V","B"};
+
+    int j;
     
-    int _1, _2, _3, _4, _5, _6, _7, _8 ,_9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24 ,_25, _26, _27, _28, _29, _30, _31, _32, _33, _34, _35, _36;
-    
+    //63 sounds = 63 indexes, 0-62
     File[] fileLocations = {new File("./current/a1.wav"),new File("./current/a2.wav"),new File("./current/a3.wav"),new File("./current/a4.wav"),new File("./current/a5.wav"),
                             new File("./current/a6.wav"),new File("./current/a7.wav"),new File("./current/a8.wav"),new File("./current/a9.wav"),new File("./current/a10.wav"),
                             new File("./current/a11.wav"),new File("./current/a12.wav"),new File("./current/a13.wav"),new File("./current/a14.wav"),new File("./current/a15.wav"),
@@ -33,9 +40,12 @@ public class Input implements Runnable{
                             new File("./current/b10.wav"),new File("./current/b11.wav"),new File("./current/b12.wav"),new File("./current/b13.wav"),new File("./current/b14.wav"),
                             new File("./current/b15.wav"),new File("./current/b16.wav"),new File("./current/b17.wav"),new File("./current/b18.wav"),new File("./current/b19.wav"),
                             new File("./current/b20.wav"),new File("./current/b21.wav"),new File("./current/b22.wav"),new File("./current/b23.wav"),new File("./current/b24.wav"),
-                            new File("./current/b25.wav"),};
+                            new File("./current/b25.wav"),new File("./soundeffects/applause.wav"),new File("./soundeffects/cricket.wav")};
+    
+    Clip[] clips = new Clip[62];
     
     DataInputStream in;
+    int color;
     
     public Input(DataInputStream in){
         
@@ -45,8 +55,16 @@ public class Input implements Runnable{
     
     public void run(){
         
-        File note = null;
-             
+        for (int i = 0; i < 62; i++){
+            try{
+                clips[i] = AudioSystem.getClip();
+                AudioInputStream stream = AudioSystem.getAudioInputStream(fileLocations[i]);
+                clips[i].open(stream);
+            }catch(Exception e){
+                
+            }
+        }
+
 //        ColorMod color = new ColorMod(true, _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8 ,  _9,  _10,  _11,  _12,  _13,  _14,  _15,  _16,  _17,  _18,  _19,  _20,  _21,  _22,  _23,  _24 ,  _25,  _26,  _27,  _28,  _29,  _30,  _31,  _32,  _33,  _34,  _35,  _36);
 //        Thread ColorMe = new Thread(color);
 //        ColorMe.start();
@@ -54,7 +72,6 @@ public class Input implements Runnable{
         while(true){
             
             try{
-                
                 String message = in.readUTF();
                 
                 //message printing, can avoid printing with commented statement
@@ -65,7 +82,7 @@ public class Input implements Runnable{
                 //is greater than 1, then print.
                 //because message always starts with . it should be ok
                 //if it is from server, print
-                
+
                 if ((message.startsWith("6Server")) == true){
                     
                     try{
@@ -76,18 +93,28 @@ public class Input implements Runnable{
                         
                     }
                     
-                    System.out.println(message.substring(1));
-                    PianoGUI.chatBox2.append(message.substring(1) + "\n");
-                    PianoGUI.chatBox2.setCaretPosition(PianoGUI.chatBox2.getDocument().getLength());
+                    try{
+                        PianoGUI.chatBox2.append(message.substring(1) + "\n");
+                        PianoGUI.chatBox2.setCaretPosition(PianoGUI.chatBox2.getDocument().getLength());
+                    }catch(Exception e){
+                        
+                    }
+                    
                     continue;
                     
-                }else if ((message.substring(3 + Integer.parseInt(message.substring(0,1))).startsWith(".")) == true){
+                }else if (message.startsWith("COLOR") == true){
                     
-                    message = message.substring(0, 3 + Integer.parseInt(message.substring(0,1))) + message.substring(4 + Integer.parseInt(message.substring(0,1)));
-                    PianoGUI.chatBox2.append(message.substring(1) + "\n");
+                    this.color = Integer.parseInt(message.substring(5));
+                    
+                }else if(message.startsWith("NOTE") == true){
+                    
+                    message = message.substring(4);
+                    
+                }else if (message.substring(3 + Integer.parseInt(message.substring(0,1))).startsWith("MESSG") == true){
+                    message = message.substring(1, 3 + Integer.parseInt(message.substring(0,1))) + message.substring(8 + Integer.parseInt(message.substring(0,1)));
+                    PianoGUI.chatBox2.append(message + "\n");
                     PianoGUI.chatBox2.setCaretPosition(PianoGUI.chatBox2.getDocument().getLength());
                     continue;
-                    
                 }
                 
                 //note: for sounds to play you need folders in same directory as
@@ -96,15 +123,14 @@ public class Input implements Runnable{
                 //clap command (/) from client to server to client
                 
                 if(message.endsWith("/") == true){
-                    note = new File("./soundeffects/applause.wav");
-                    pianoArea.append(message.substring(1) + "claps | ");
+                    j = 61;
+                    pianoArea.append(message.substring(1) + "| Clapping | ");
                     pianoArea.setCaretPosition(pianoArea.getDocument().getLength());
                 //cricket command (\) from client to server to client
                     
                 }else if(message.endsWith("\\") == true){
-                    
-                    note = new File("./soundeffects/cricket.wav");
-                    pianoArea.append(message.substring(1) + " claps | ");
+                    j = 62;
+                    pianoArea.append(message.substring(1) + "| Crickets Chirping | ");
                     pianoArea.setCaretPosition(pianoArea.getDocument().getLength());
                     
                 }else{
@@ -122,26 +148,26 @@ public class Input implements Runnable{
                 
                 //61 notes total
                 
-                    for (int i = Integer.parseInt(message.substring(0, 1)) + 3; i < message.length(); i++){
-                        String key = Character.toString(message.charAt(i));
-                        for (int j = 0; j < 61; j++){
-                            if(key.equals(keyNotes[j])){
-                                note = fileLocations[j];
-                                pianoArea.append(message.substring(1) + " | ");
-                                pianoArea.setCaretPosition(pianoArea.getDocument().getLength());
-                                ColorMod color = new ColorMod(j);
-                                Thread ColorMe = new Thread(color);
-                                ColorMe.start();
-                                break;
-                            }
+                    for (j = 0; j < 61; j++){
+                        noteGot = false;
+                        if(message.equals(keyNotes[j])){                         
+                            pianoArea.append(message + " ");
+                            pianoArea.setCaretPosition(pianoArea.getDocument().getLength());
+                            ColorMod colorMod = new ColorMod(j, color);
+                            Thread ColorMe = new Thread(colorMod);
+                            ColorMe.start();
+                            noteGot = true;
+                            break;
                         }
                     }
+                    if(!noteGot){
+                        j = 500;
+                    }
                 }
-                
-                PlaySound Playsound = new PlaySound(note);
-                Thread PlaySound = new Thread(Playsound);
-                PlaySound.start();
-                note = null;
+                if (j < 63){
+                    clips[j].setFramePosition(0);
+                    clips[j].start();
+                }
                 
             }catch (IOException e){
             }

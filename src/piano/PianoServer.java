@@ -32,6 +32,7 @@ java -cp Piano(noip).jar piano.PianoClient
 
 import java.io.*;
 import java.net.*;
+import java.util.Random;
 
 public class PianoServer {
 
@@ -43,6 +44,7 @@ public class PianoServer {
     
     public static void main(String[] args)throws Exception{
         
+        Random rand = new Random();
         //get ip
         URL myip = new URL("http://checkip.amazonaws.com");
         BufferedReader inBR = new BufferedReader(new InputStreamReader(
@@ -60,30 +62,45 @@ public class PianoServer {
         }
         System.out.println("Server started!");
         
+        
         //constantly check for connections
         while(true){
+            boolean allowConnect = true;
             //wait for client to connect
             socket = serverSocket.accept();
             
             System.out.println("Client Connected (" + socket.getInetAddress() + ") ");
             
-            for (int i = 0; i < 10; i++){ //max users 10
-
-                out = new DataOutputStream(socket.getOutputStream());
-                in = new DataInputStream(socket.getInputStream());
-
-    //            out.writeUTF("This is a Java socket test.");
-    //            System.out.println("Data sent");
-
-                if (user[i] == null){
-                    user[i] = new Users(out, in, user, i);
-                    Thread thread = new Thread(user[i]);
-                    thread.start();
-                    break;
+            //check ip ban list
+            try (BufferedReader br = new BufferedReader(new FileReader("ipban.txt"))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                   if(socket.getInetAddress().toString().equals(line)){
+                       System.out.println("This ip is banned!");
+                       allowConnect = false;
+                   }
+                }
+            }
+            
+            if(allowConnect){
+                
+                while(true){
+                    
+                    //PROBABLY NOT BEST WAY TO DO IT
+                    int i = rand.nextInt(10);
+                    System.out.println(i);
+                    
+                    if (user[i] == null){
+                        out = new DataOutputStream(socket.getOutputStream());
+                        in = new DataInputStream(socket.getInputStream());
+                        user[i] = new Users(out, in, user, i);
+                        Thread thread = new Thread(user[i]);
+                        thread.start();
+                        break;
+                    }
                 }
             }
         }
-        
     }
 }
 

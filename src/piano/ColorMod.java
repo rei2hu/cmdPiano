@@ -11,10 +11,15 @@ package piano;
  */
 
 import java.awt.Color;
+import java.lang.reflect.Field;
 
 public class ColorMod implements Runnable{
     
     int j;
+    int color;
+    Color colorColor;
+    
+    String[] colors = {"red", "orange", "blue", "pink", "green", "magenta", "cyan", "yellow", "gray", "white"};
     
     //30 colors for gradient
     
@@ -113,14 +118,22 @@ public class ColorMod implements Runnable{
 //        this._36 = _36;
 //        this.k = k;
 //    }
-    public ColorMod(int j){
+    public ColorMod(int j, int color){
         this.j = j;
+        this.color = color;
     }
     
     public void run(){
+        try {
+            Field field = Class.forName("java.awt.Color").getField(colors[color]);
+            colorColor = (Color)field.get(null);
+        } catch (Exception e) {
+            colorColor = java.awt.Color.white;
+            System.out.println("exception");
+        }
         switch(j){
             case 0:
-                PianoGUI.panel1.setBackground(Color.white);
+                PianoGUI.panel1.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -129,7 +142,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel1.setBackground(Color.black);
                 break;
             case 1:
-                PianoGUI.panel2.setBackground(Color.white);
+                PianoGUI.panel2.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -138,7 +151,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel2.setBackground(Color.black);
                 break;
             case 2:
-                PianoGUI.panel3.setBackground(Color.white);
+                PianoGUI.panel3.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -147,7 +160,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel3.setBackground(Color.black);
                 break;
             case 3:
-                PianoGUI.panel4.setBackground(Color.white);
+                PianoGUI.panel4.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -156,7 +169,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel4.setBackground(Color.black);
                 break;
             case 4:
-                PianoGUI.panel5.setBackground(Color.white);
+                PianoGUI.panel5.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -165,7 +178,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel5.setBackground(Color.black);
                 break;
             case 5:
-                PianoGUI.panel6.setBackground(Color.white);
+                PianoGUI.panel6.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -174,7 +187,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel6.setBackground(Color.black);
                 break;
             case 6:
-                PianoGUI.panel7.setBackground(Color.white);
+                PianoGUI.panel7.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -183,7 +196,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel7.setBackground(Color.black);
                 break;
             case 7:
-                PianoGUI.panel8.setBackground(Color.white);
+                PianoGUI.panel8.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -192,7 +205,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel8.setBackground(Color.black);
                 break;
             case 8:
-                PianoGUI.panel9.setBackground(Color.white);
+                PianoGUI.panel9.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -201,7 +214,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel9.setBackground(Color.black);
                 break;
             case 9:
-                PianoGUI.panel10.setBackground(Color.white);
+                PianoGUI.panel10.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -210,7 +223,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel10.setBackground(Color.black);
                 break;
             case 10:
-                PianoGUI.panel11.setBackground(Color.white);
+                PianoGUI.panel11.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -219,7 +232,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel11.setBackground(Color.black);
                 break;
             case 11:
-                PianoGUI.panel12.setBackground(Color.white);
+                PianoGUI.panel12.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -228,7 +241,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel12.setBackground(Color.black);
                 break;
             case 12:
-                PianoGUI.panel13.setBackground(Color.white);
+                PianoGUI.panel13.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -237,7 +250,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel13.setBackground(Color.black);
                 break;
             case 13:
-                PianoGUI.panel14.setBackground(Color.white);
+                PianoGUI.panel14.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -246,7 +259,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel14.setBackground(Color.black);
                 break;
             case 14:
-                PianoGUI.panel15.setBackground(Color.white);
+                PianoGUI.panel15.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -255,7 +268,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel15.setBackground(Color.black);
                 break;
             case 15:
-                PianoGUI.panel16.setBackground(Color.white);
+                PianoGUI.panel16.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -264,7 +277,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel16.setBackground(Color.black);
                 break;
             case 16:
-                PianoGUI.panel17.setBackground(Color.white);
+                PianoGUI.panel17.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -273,7 +286,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel17.setBackground(Color.black);
                 break;
             case 17:
-                PianoGUI.panel8.setBackground(Color.white);
+                PianoGUI.panel18.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -282,7 +295,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel18.setBackground(Color.black);
                 break;
             case 18:
-                PianoGUI.panel19.setBackground(Color.white);
+                PianoGUI.panel19.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -291,7 +304,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel19.setBackground(Color.black);
                 break;
             case 19:
-                PianoGUI.panel20.setBackground(Color.white);
+                PianoGUI.panel20.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -300,7 +313,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel20.setBackground(Color.black);
                 break;
             case 20:
-                PianoGUI.panel21.setBackground(Color.white);
+                PianoGUI.panel21.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -309,7 +322,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel21.setBackground(Color.black);
                 break;
             case 21:
-                PianoGUI.panel22.setBackground(Color.white);
+                PianoGUI.panel22.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -318,7 +331,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel22.setBackground(Color.black);
                 break;
             case 22:
-                PianoGUI.panel23.setBackground(Color.white);
+                PianoGUI.panel23.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -327,7 +340,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel23.setBackground(Color.black);
                 break;
             case 23:
-                PianoGUI.panel24.setBackground(Color.white);
+                PianoGUI.panel24.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -336,7 +349,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel24.setBackground(Color.black);
                 break;
             case 24:
-                PianoGUI.panel25.setBackground(Color.white);
+                PianoGUI.panel25.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -345,7 +358,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel25.setBackground(Color.black);
                 break;
             case 25:
-                PianoGUI.panel26.setBackground(Color.white);
+                PianoGUI.panel26.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -354,7 +367,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel26.setBackground(Color.black);
                 break;
             case 26:
-                PianoGUI.panel27.setBackground(Color.white);
+                PianoGUI.panel27.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -363,7 +376,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel27.setBackground(Color.black);
                 break;
             case 27:
-                PianoGUI.panel28.setBackground(Color.white);
+                PianoGUI.panel28.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -372,7 +385,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel28.setBackground(Color.black);
                 break;
             case 28:
-                PianoGUI.panel29.setBackground(Color.white);
+                PianoGUI.panel29.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -381,7 +394,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel29.setBackground(Color.black);
                 break;
             case 29:
-                PianoGUI.panel30.setBackground(Color.white);
+                PianoGUI.panel30.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -390,7 +403,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel30.setBackground(Color.black);
                 break;
             case 30:
-                PianoGUI.panel31.setBackground(Color.white);
+                PianoGUI.panel31.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -399,7 +412,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel31.setBackground(Color.black);
                 break;
             case 31:
-                PianoGUI.panel32.setBackground(Color.white);
+                PianoGUI.panel32.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -408,7 +421,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel32.setBackground(Color.black);
                 break;
             case 32:
-                PianoGUI.panel33.setBackground(Color.white);
+                PianoGUI.panel33.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -417,7 +430,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel33.setBackground(Color.black);
                 break;
             case 33:
-                PianoGUI.panel34.setBackground(Color.white);
+                PianoGUI.panel34.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -426,7 +439,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel34.setBackground(Color.black);
                 break;
             case 34:
-                PianoGUI.panel35.setBackground(Color.white);
+                PianoGUI.panel35.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
@@ -435,7 +448,7 @@ public class ColorMod implements Runnable{
                 PianoGUI.panel35.setBackground(Color.black);
                 break;
             case 35:
-                PianoGUI.panel36.setBackground(Color.white);
+                PianoGUI.panel36.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){

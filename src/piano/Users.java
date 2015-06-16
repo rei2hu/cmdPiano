@@ -56,14 +56,19 @@ public class Users implements Runnable{
                 //chat messages and notes
                 
                 String message = in.readUTF();
-                if (message.length() > 1){
+                
+                if (message.startsWith("MESSG")){
                             System.out.println(username.length() + username + ": " + message);
                 }
                 
                 for (int i = 0; i < 10; i++){
-                    if ((user[i] != null) && (message.length() > 0) && (message != null)){
+                    if ((user[i] != null) && (message.startsWith("NOTE"))){
+                        user[i].out.writeUTF(message);
+                        user[i].out.writeUTF("COLOR" + pid);
+                        
+                    }else if ((user[i] != null) && (message.startsWith("MESSG"))){
                         user[i].out.writeUTF(username.length() + username + ": " + message);
-                    }                 
+                    }
                 }
                 
                 //if someone disconnects
