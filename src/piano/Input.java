@@ -42,7 +42,7 @@ public class Input implements Runnable{
                             new File("./current/b20.wav"),new File("./current/b21.wav"),new File("./current/b22.wav"),new File("./current/b23.wav"),new File("./current/b24.wav"),
                             new File("./current/b25.wav"),new File("./soundeffects/applause.wav"),new File("./soundeffects/cricket.wav")};
     
-    Clip[] clips = new Clip[62];
+    Clip[] clips = new Clip[63];
     
     DataInputStream in;
     int color;
@@ -55,7 +55,7 @@ public class Input implements Runnable{
     
     public void run(){
         
-        for (int i = 0; i < 62; i++){
+        for (int i = 0; i < 63; i++){
             try{
                 clips[i] = AudioSystem.getClip();
                 AudioInputStream stream = AudioSystem.getAudioInputStream(fileLocations[i]);
@@ -126,6 +126,7 @@ public class Input implements Runnable{
                     j = 61;
                     pianoArea.append(message.substring(1) + "| Clapping | ");
                     pianoArea.setCaretPosition(pianoArea.getDocument().getLength());
+                    
                 //cricket command (\) from client to server to client
                     
                 }else if(message.endsWith("\\") == true){
