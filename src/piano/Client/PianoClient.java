@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package piano;
+package piano.Client;
 /**
  *
  * @author Thomas
@@ -87,7 +87,7 @@ public class PianoClient{
         System.out.print("Enter a username: ");
         out.writeUTF("." + sc.nextLine());
         
-        PianoGUI.main(args);
+        PianoClientGUI.main(args);
         while(true){
             //dunno
         }

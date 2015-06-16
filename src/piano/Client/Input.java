@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package piano;
+package piano.Client;
 
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.IOException;
-import static piano.PianoGUI.pianoArea;
+import static piano.Client.PianoClientGUI.pianoArea;
 
 /**
  *
@@ -21,11 +21,13 @@ import javax.sound.sampled.AudioInputStream;
 
 public class Input implements Runnable{
     
+    private VisualizerDecay value;
+    
     boolean noteGot = false;
     
     String[] keyNotes = {"1","2","3","4","5","6","7","8","9","0","q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m","!","@","$","%","^","*","(","Q","W","E","T","Y","I","O","P","S","D","G","H","J","L","Z","C","V","B"};
 
-    int j;
+    int j, notesPlayed;
     
     //63 sounds = 63 indexes, 0-62
     File[] fileLocations = {new File("./current/a1.wav"),new File("./current/a2.wav"),new File("./current/a3.wav"),new File("./current/a4.wav"),new File("./current/a5.wav"),
@@ -55,6 +57,10 @@ public class Input implements Runnable{
     
     public void run(){
         
+        value = new VisualizerDecay(notesPlayed);
+        Thread Value = new Thread(value);
+        Value.start();
+                            
         for (int i = 0; i < 63; i++){
             try{
                 clips[i] = AudioSystem.getClip();
@@ -65,7 +71,7 @@ public class Input implements Runnable{
             }
         }
 
-//        ColorMod color = new ColorMod(true, _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8 ,  _9,  _10,  _11,  _12,  _13,  _14,  _15,  _16,  _17,  _18,  _19,  _20,  _21,  _22,  _23,  _24 ,  _25,  _26,  _27,  _28,  _29,  _30,  _31,  _32,  _33,  _34,  _35,  _36);
+//        NoteVisualizer color = new NoteVisualizer(true, _1,  _2,  _3,  _4,  _5,  _6,  _7,  _8 ,  _9,  _10,  _11,  _12,  _13,  _14,  _15,  _16,  _17,  _18,  _19,  _20,  _21,  _22,  _23,  _24 ,  _25,  _26,  _27,  _28,  _29,  _30,  _31,  _32,  _33,  _34,  _35,  _36);
 //        Thread ColorMe = new Thread(color);
 //        ColorMe.start();
             
@@ -94,8 +100,8 @@ public class Input implements Runnable{
                     }
                     
                     try{
-                        PianoGUI.chatBox2.append(message.substring(1) + "\n");
-                        PianoGUI.chatBox2.setCaretPosition(PianoGUI.chatBox2.getDocument().getLength());
+                        PianoClientGUI.chatBox2.append(message.substring(1) + "\n");
+                        PianoClientGUI.chatBox2.setCaretPosition(PianoClientGUI.chatBox2.getDocument().getLength());
                     }catch(Exception e){
                         
                     }
@@ -112,8 +118,8 @@ public class Input implements Runnable{
                     
                 }else if (message.substring(3 + Integer.parseInt(message.substring(0,1))).startsWith("MESSG") == true){
                     message = message.substring(1, 3 + Integer.parseInt(message.substring(0,1))) + message.substring(8 + Integer.parseInt(message.substring(0,1)));
-                    PianoGUI.chatBox2.append(message + "\n");
-                    PianoGUI.chatBox2.setCaretPosition(PianoGUI.chatBox2.getDocument().getLength());
+                    PianoClientGUI.chatBox2.append(message + "\n");
+                    PianoClientGUI.chatBox2.setCaretPosition(PianoClientGUI.chatBox2.getDocument().getLength());
                     continue;
                 }
                 
@@ -151,10 +157,13 @@ public class Input implements Runnable{
                 
                     for (j = 0; j < 61; j++){
                         noteGot = false;
-                        if(message.equals(keyNotes[j])){                         
+                        if(message.equals(keyNotes[j])){   
+                            if(value.a < 97){
+                                PianoClientGUI.jProgressBar1.setValue(value.a += 3);                                
+                            }
                             pianoArea.append(message + " ");
                             pianoArea.setCaretPosition(pianoArea.getDocument().getLength());
-                            ColorMod colorMod = new ColorMod(j, color);
+                            NoteVisualizer colorMod = new NoteVisualizer(j, color);
                             Thread ColorMe = new Thread(colorMod);
                             ColorMe.start();
                             noteGot = true;

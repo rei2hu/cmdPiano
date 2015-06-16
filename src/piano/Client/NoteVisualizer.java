@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package piano;
+package piano.Client;
 
 /**
  *
@@ -13,7 +13,7 @@ package piano;
 import java.awt.Color;
 import java.lang.reflect.Field;
 
-public class ColorMod implements Runnable{
+public class NoteVisualizer implements Runnable{
     
     int j;
     int color;
@@ -38,7 +38,7 @@ public class ColorMod implements Runnable{
 //    
 //    boolean k;
 //    
-//    public ColorMod(boolean k, int j, int _1, int _2, int _3, int _4, int _5, int _6, int _7, int _8 , int _9, int _10, int _11, int _12, int _13, int _14, int _15, int _16, int _17, int _18, int _19, int _20, int _21, int _22, int _23, int _24 , int _25, int _26, int _27, int _28, int _29, int _30, int _31, int _32, int _33, int _34, int _35, int _36){
+//    public NoteVisualizer(boolean k, int j, int _1, int _2, int _3, int _4, int _5, int _6, int _7, int _8 , int _9, int _10, int _11, int _12, int _13, int _14, int _15, int _16, int _17, int _18, int _19, int _20, int _21, int _22, int _23, int _24 , int _25, int _26, int _27, int _28, int _29, int _30, int _31, int _32, int _33, int _34, int _35, int _36){
 //        this.j = j;
 //        this._1 = _1;
 //        this._2 = _2;
@@ -79,7 +79,7 @@ public class ColorMod implements Runnable{
 //        this.k = k;
 //    }
 //    
-//    public ColorMod(boolean k, int _1, int _2, int _3, int _4, int _5, int _6, int _7, int _8 , int _9, int _10, int _11, int _12, int _13, int _14, int _15, int _16, int _17, int _18, int _19, int _20, int _21, int _22, int _23, int _24 , int _25, int _26, int _27, int _28, int _29, int _30, int _31, int _32, int _33, int _34, int _35, int _36){
+//    public NoteVisualizer(boolean k, int _1, int _2, int _3, int _4, int _5, int _6, int _7, int _8 , int _9, int _10, int _11, int _12, int _13, int _14, int _15, int _16, int _17, int _18, int _19, int _20, int _21, int _22, int _23, int _24 , int _25, int _26, int _27, int _28, int _29, int _30, int _31, int _32, int _33, int _34, int _35, int _36){
 //        this._1 = _1;
 //        this._2 = _2;
 //        this._3 = _3;
@@ -118,7 +118,7 @@ public class ColorMod implements Runnable{
 //        this._36 = _36;
 //        this.k = k;
 //    }
-    public ColorMod(int j, int color){
+    public NoteVisualizer(int j, int color){
         this.j = j;
         this.color = color;
     }
@@ -132,332 +132,410 @@ public class ColorMod implements Runnable{
             System.out.println("exception");
         }
         switch(j){
+            case 36:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 0:
-                PianoGUI.panel1.setBackground(colorColor);
+                PianoClientGUI.panel1.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel1.setBackground(Color.black);
+                PianoClientGUI.panel1.setBackground(Color.black);
                 break;
+            case 37:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 1:
-                PianoGUI.panel2.setBackground(colorColor);
+                PianoClientGUI.panel2.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel2.setBackground(Color.black);
+                PianoClientGUI.panel2.setBackground(Color.black);
                 break;
             case 2:
-                PianoGUI.panel3.setBackground(colorColor);
+                PianoClientGUI.panel3.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel3.setBackground(Color.black);
+                PianoClientGUI.panel3.setBackground(Color.black);
                 break;
+            case 38:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 3:
-                PianoGUI.panel4.setBackground(colorColor);
+                PianoClientGUI.panel4.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel4.setBackground(Color.black);
+                PianoClientGUI.panel4.setBackground(Color.black);
                 break;
+            case 39:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 4:
-                PianoGUI.panel5.setBackground(colorColor);
+                PianoClientGUI.panel5.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel5.setBackground(Color.black);
+                PianoClientGUI.panel5.setBackground(Color.black);
                 break;
+            case 40:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 5:
-                PianoGUI.panel6.setBackground(colorColor);
+                PianoClientGUI.panel6.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel6.setBackground(Color.black);
+                PianoClientGUI.panel6.setBackground(Color.black);
                 break;
             case 6:
-                PianoGUI.panel7.setBackground(colorColor);
+                PianoClientGUI.panel7.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel7.setBackground(Color.black);
+                PianoClientGUI.panel7.setBackground(Color.black);
                 break;
+            case 41:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 7:
-                PianoGUI.panel8.setBackground(colorColor);
+                PianoClientGUI.panel8.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel8.setBackground(Color.black);
+                PianoClientGUI.panel8.setBackground(Color.black);
                 break;
+            case 42:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 8:
-                PianoGUI.panel9.setBackground(colorColor);
+                PianoClientGUI.panel9.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel9.setBackground(Color.black);
+                PianoClientGUI.panel9.setBackground(Color.black);
                 break;
             case 9:
-                PianoGUI.panel10.setBackground(colorColor);
+                PianoClientGUI.panel10.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel10.setBackground(Color.black);
+                PianoClientGUI.panel10.setBackground(Color.black);
                 break;
+            case 43:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 10:
-                PianoGUI.panel11.setBackground(colorColor);
+                PianoClientGUI.panel11.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel11.setBackground(Color.black);
+                PianoClientGUI.panel11.setBackground(Color.black);
                 break;
+            case 44:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 11:
-                PianoGUI.panel12.setBackground(colorColor);
+                PianoClientGUI.panel12.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel12.setBackground(Color.black);
+                PianoClientGUI.panel12.setBackground(Color.black);
                 break;
+            case 45:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 12:
-                PianoGUI.panel13.setBackground(colorColor);
+                PianoClientGUI.panel13.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel13.setBackground(Color.black);
+                PianoClientGUI.panel13.setBackground(Color.black);
                 break;
             case 13:
-                PianoGUI.panel14.setBackground(colorColor);
+                PianoClientGUI.panel14.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel14.setBackground(Color.black);
+                PianoClientGUI.panel14.setBackground(Color.black);
                 break;
+            case 46:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 14:
-                PianoGUI.panel15.setBackground(colorColor);
+                PianoClientGUI.panel15.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel15.setBackground(Color.black);
+                PianoClientGUI.panel15.setBackground(Color.black);
                 break;
+            case 47:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 15:
-                PianoGUI.panel16.setBackground(colorColor);
+                PianoClientGUI.panel16.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel16.setBackground(Color.black);
+                PianoClientGUI.panel16.setBackground(Color.black);
                 break;
             case 16:
-                PianoGUI.panel17.setBackground(colorColor);
+                PianoClientGUI.panel17.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel17.setBackground(Color.black);
+                PianoClientGUI.panel17.setBackground(Color.black);
                 break;
+            case 48:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 17:
-                PianoGUI.panel18.setBackground(colorColor);
+                PianoClientGUI.panel18.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel18.setBackground(Color.black);
+                PianoClientGUI.panel18.setBackground(Color.black);
                 break;
+            case 49:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 18:
-                PianoGUI.panel19.setBackground(colorColor);
+                PianoClientGUI.panel19.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel19.setBackground(Color.black);
+                PianoClientGUI.panel19.setBackground(Color.black);
                 break;
+            case 50:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 19:
-                PianoGUI.panel20.setBackground(colorColor);
+                PianoClientGUI.panel20.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel20.setBackground(Color.black);
+                PianoClientGUI.panel20.setBackground(Color.black);
                 break;
             case 20:
-                PianoGUI.panel21.setBackground(colorColor);
+                PianoClientGUI.panel21.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel21.setBackground(Color.black);
+                PianoClientGUI.panel21.setBackground(Color.black);
                 break;
+            case 51:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 21:
-                PianoGUI.panel22.setBackground(colorColor);
+                PianoClientGUI.panel22.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel22.setBackground(Color.black);
+                PianoClientGUI.panel22.setBackground(Color.black);
                 break;
+            case 52:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 22:
-                PianoGUI.panel23.setBackground(colorColor);
+                PianoClientGUI.panel23.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel23.setBackground(Color.black);
+                PianoClientGUI.panel23.setBackground(Color.black);
                 break;
             case 23:
-                PianoGUI.panel24.setBackground(colorColor);
+                PianoClientGUI.panel24.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel24.setBackground(Color.black);
+                PianoClientGUI.panel24.setBackground(Color.black);
                 break;
+            case 53:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 24:
-                PianoGUI.panel25.setBackground(colorColor);
+                PianoClientGUI.panel25.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel25.setBackground(Color.black);
+                PianoClientGUI.panel25.setBackground(Color.black);
                 break;
+            case 54:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 25:
-                PianoGUI.panel26.setBackground(colorColor);
+                PianoClientGUI.panel26.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel26.setBackground(Color.black);
+                PianoClientGUI.panel26.setBackground(Color.black);
                 break;
+            case 55:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 26:
-                PianoGUI.panel27.setBackground(colorColor);
+                PianoClientGUI.panel27.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel27.setBackground(Color.black);
+                PianoClientGUI.panel27.setBackground(Color.black);
                 break;
             case 27:
-                PianoGUI.panel28.setBackground(colorColor);
+                PianoClientGUI.panel28.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel28.setBackground(Color.black);
+                PianoClientGUI.panel28.setBackground(Color.black);
                 break;
+            case 56:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 28:
-                PianoGUI.panel29.setBackground(colorColor);
+                PianoClientGUI.panel29.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel29.setBackground(Color.black);
+                PianoClientGUI.panel29.setBackground(Color.black);
                 break;
+            case 57:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 29:
-                PianoGUI.panel30.setBackground(colorColor);
+                PianoClientGUI.panel30.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel30.setBackground(Color.black);
+                PianoClientGUI.panel30.setBackground(Color.black);
                 break;
             case 30:
-                PianoGUI.panel31.setBackground(colorColor);
+                PianoClientGUI.panel31.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel31.setBackground(Color.black);
+                PianoClientGUI.panel31.setBackground(Color.black);
                 break;
+            case 58:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 31:
-                PianoGUI.panel32.setBackground(colorColor);
+                PianoClientGUI.panel32.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel32.setBackground(Color.black);
+                PianoClientGUI.panel32.setBackground(Color.black);
                 break;
+            case 59:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 32:
-                PianoGUI.panel33.setBackground(colorColor);
+                PianoClientGUI.panel33.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel33.setBackground(Color.black);
+                PianoClientGUI.panel33.setBackground(Color.black);
                 break;
+            case 60:
+                PianoClientGUI.panel37.setBackground(colorColor);
+                PianoClientGUI.panel38.setBackground(colorColor);
             case 33:
-                PianoGUI.panel34.setBackground(colorColor);
+                PianoClientGUI.panel34.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel34.setBackground(Color.black);
+                PianoClientGUI.panel34.setBackground(Color.black);
                 break;
             case 34:
-                PianoGUI.panel35.setBackground(colorColor);
+                PianoClientGUI.panel35.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel35.setBackground(Color.black);
+                PianoClientGUI.panel35.setBackground(Color.black);
                 break;
             case 35:
-                PianoGUI.panel36.setBackground(colorColor);
+                PianoClientGUI.panel36.setBackground(colorColor);
                 try{
                     Thread.sleep(100);
                 }catch(InterruptedException e){
                     
                 }
-                PianoGUI.panel36.setBackground(Color.black);
+                PianoClientGUI.panel36.setBackground(Color.black);
                 break;
+
             default:
         }
+        PianoClientGUI.panel37.setBackground(Color.black);
+        PianoClientGUI.panel38.setBackground(Color.black);
 //        System.out.println(j);
 //        System.out.println(_1);
 //        while(k){
